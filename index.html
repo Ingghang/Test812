@@ -3,8 +3,2381 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    hi I am a chud
 
+    <title>EcoMart | Shop</title>
+
+    <link rel="stylesheet" href="shop.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<style>
+    /* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --primary: #285943;
+    --primary-dark: #1d4533;
+
+    --accent: #d9954c;
+
+    --background: #f7f6f1;
+    --card: #ffffff;
+
+    --text: #1e2923;
+    --muted: #747b76;
+
+    --border: #e7e7e2;
+
+    --radius: 16px;
+
+}
+
+body {
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+
+    line-height: 1.5;
+
+}
+
+button,
+input,
+select {
+
+    font: inherit;
+
+}
+
+button {
+
+    border: none;
+    cursor: pointer;
+
+}
+
+a {
+
+    text-decoration: none;
+    color: inherit;
+
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+
+    height: 76px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border-bottom: 1px solid var(--border);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+
+    backdrop-filter: blur(12px);
+
+}
+
+.nav-container {
+
+    max-width: 1240px;
+
+    height: 100%;
+
+    margin: auto;
+
+    padding: 0 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+/* LOGO */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    color: var(--text);
+
+}
+
+.logo > span:last-child {
+
+    color: var(--primary);
+
+}
+
+.logo-icon {
+
+    width: 34px;
+    height: 34px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 10px;
+
+    background: #e6f0e8;
+
+    color: var(--primary);
+
+}
+
+.logo > span:not(.logo-icon) {
+
+    color: var(--primary);
+
+}
+
+
+/* NAV LINKS */
+
+.nav-links {
+
+    display: flex;
+
+    gap: 34px;
+
+}
+
+.nav-links a {
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    color: var(--muted);
+
+    transition: 0.2s;
+
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+
+    color: var(--primary);
+
+}
+
+
+/* NAV ACTIONS */
+
+.nav-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+}
+
+.icon-btn,
+.cart-btn {
+
+    width: 40px;
+    height: 40px;
+
+    background: transparent;
+
+    border-radius: 10px;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--text);
+
+    transition: 0.2s;
+
+}
+
+.icon-btn:hover,
+.cart-btn:hover {
+
+    background: #eef2ed;
+
+    color: var(--primary);
+
+}
+
+.cart-btn {
+
+    position: relative;
+
+}
+
+.cart-count {
+
+    position: absolute;
+
+    top: -2px;
+    right: -2px;
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    color: white;
+
+    font-size: 10px;
+
+    display: grid;
+    place-items: center;
+
+    font-weight: 700;
+
+}
+
+.menu-btn {
+
+    display: none;
+
+    width: 40px;
+    height: 40px;
+
+    background: transparent;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.shop-hero {
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(30, 70, 51, 0.96),
+            rgba(40, 89, 67, 0.90)
+        );
+
+    color: white;
+
+    padding: 70px 24px;
+
+}
+
+.hero-content {
+
+    max-width: 1240px;
+
+    margin: auto;
+
+}
+
+.eyebrow {
+
+    display: inline-block;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: #d8e8dc;
+
+    margin-bottom: 12px;
+
+}
+
+.hero-content h1 {
+
+    font-size: clamp(42px, 6vw, 64px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 20px;
+
+}
+
+.hero-content h1 span {
+
+    color: #f0bd78;
+
+}
+
+.hero-content p {
+
+    max-width: 530px;
+
+    font-size: 16px;
+
+    color: #d8e5dc;
+
+}
+
+
+/* =====================================================
+   SHOP CONTAINER
+===================================================== */
+
+.shop-container {
+
+    max-width: 1240px;
+
+    margin: auto;
+
+    padding: 40px 24px 80px;
+
+}
+
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.shop-toolbar {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 40px;
+
+}
+
+.categories {
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+}
+
+.category {
+
+    padding: 10px 17px;
+
+    border-radius: 100px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+
+}
+
+.category:hover {
+
+    border-color: var(--primary);
+
+    color: var(--primary);
+
+}
+
+.category.active {
+
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: white;
+
+}
+
+
+/* SHOP ACTIONS */
+
+.shop-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+.search-box {
+
+    width: 230px;
+
+    height: 42px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0 13px;
+
+}
+
+.search-box i {
+
+    color: #999;
+
+    font-size: 13px;
+
+}
+
+.search-box input {
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    color: var(--text);
+
+    background: transparent;
+
+    font-size: 13px;
+
+}
+
+.search-box input::placeholder {
+
+    color: #aaa;
+
+}
+
+#sortSelect {
+
+    height: 42px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: white;
+
+    padding: 0 12px;
+
+    color: var(--text);
+
+    outline: none;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+}
+
+
+/* =====================================================
+   PRODUCT HEADING
+===================================================== */
+
+.products-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+
+}
+
+.products-heading h2 {
+
+    font-size: 24px;
+
+    letter-spacing: -0.5px;
+
+}
+
+.products-heading p {
+
+    margin-top: 3px;
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+}
+
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+
+.product-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+}
+
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.product-card {
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+.product-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 35px rgba(34, 55, 43, 0.09);
+
+}
+
+
+/* IMAGE */
+
+.product-image {
+
+    height: 240px;
+
+    position: relative;
+
+    background: #f1f1eb;
+
+    overflow: hidden;
+
+}
+
+.product-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+
+}
+
+.product-card:hover .product-image img {
+
+    transform: scale(1.05);
+
+}
+
+
+/* WISHLIST */
+
+.wishlist {
+
+    position: absolute;
+
+    top: 12px;
+    right: 12px;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.92);
+
+    display: grid;
+    place-items: center;
+
+    color: #555;
+
+    transition: 0.2s;
+
+}
+
+.wishlist:hover {
+
+    color: #c45151;
+
+    transform: scale(1.05);
+
+}
+
+.wishlist.active {
+
+    color: #c45151;
+
+}
+
+
+/* BADGE */
+
+.product-badge {
+
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+}
+
+
+/* PRODUCT INFO */
+
+.product-info {
+
+    padding: 17px;
+
+}
+
+.product-category {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: var(--primary);
+
+    font-weight: 700;
+
+}
+
+.product-name {
+
+    margin-top: 5px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
+}
+
+.product-rating {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+
+}
+
+.product-rating .star {
+
+    color: #e0a34f;
+
+}
+
+.review-count {
+
+    color: #999;
+
+}
+
+.product-bottom {
+
+    margin-top: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+.product-price {
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    color: var(--text);
+
+}
+
+.add-cart {
+
+    background: var(--primary);
+
+    color: white;
+
+    padding: 9px 12px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    transition: 0.2s;
+
+}
+
+.add-cart:hover {
+
+    background: var(--primary-dark);
+
+}
+
+
+/* =====================================================
+   NO RESULTS
+===================================================== */
+
+.no-results {
+
+    display: none;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+}
+
+.no-results.show {
+
+    display: block;
+
+}
+
+.no-results-icon {
+
+    width: 60px;
+    height: 60px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background: #e9eee9;
+
+    color: var(--primary);
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+
+}
+
+.no-results h3 {
+
+    font-size: 20px;
+
+}
+
+.no-results p {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    margin-top: 5px;
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(18, 27, 22, 0.55);
+
+    backdrop-filter: blur(5px);
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    z-index: 200;
+
+}
+
+.modal-overlay.show {
+
+    display: flex;
+
+}
+
+.product-modal {
+
+    max-width: 850px;
+    width: 100%;
+
+    background: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    position: relative;
+
+    animation: modalIn 0.25s ease;
+
+}
+
+@keyframes modalIn {
+
+    from {
+
+        opacity: 0;
+        transform: scale(0.95);
+
+    }
+
+    to {
+
+        opacity: 1;
+        transform: scale(1);
+
+    }
+
+}
+
+.close-modal {
+
+    position: absolute;
+
+    right: 16px;
+    top: 16px;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    z-index: 5;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+}
+
+.modal-image {
+
+    height: 500px;
+
+    background: #f1f1eb;
+
+}
+
+.modal-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+.modal-content {
+
+    padding: 55px 40px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+}
+
+.modal-category {
+
+    font-size: 11px;
+
+    color: var(--primary);
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+.modal-content h2 {
+
+    font-size: 32px;
+
+    line-height: 1.1;
+
+    margin: 8px 0 15px;
+
+}
+
+.modal-rating {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 13px;
+
+}
+
+.modal-rating span {
+
+    color: #e0a34f;
+
+}
+
+.modal-rating small {
+
+    color: #999;
+
+}
+
+.modal-description {
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin: 20px 0;
+
+}
+
+.modal-price {
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+
+}
+
+.modal-actions {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+.modal-cart {
+
+    flex: 1;
+
+    justify-content: center;
+
+    padding: 13px;
+
+}
+
+.modal-wishlist {
+
+    width: 48px;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.cart-toast {
+
+    position: fixed;
+
+    bottom: 25px;
+    right: 25px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+
+    padding: 13px 16px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    transform: translateY(130px);
+
+    opacity: 0;
+
+    transition: 0.3s;
+
+    z-index: 300;
+
+}
+
+.cart-toast.show {
+
+    transform: translateY(0);
+
+    opacity: 1;
+
+}
+
+.toast-icon {
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    background: #e4f1e7;
+
+    color: var(--primary);
+
+    display: grid;
+    place-items: center;
+
+}
+
+.cart-toast strong {
+
+    font-size: 13px;
+
+}
+
+.cart-toast p {
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+
+    .product-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+    .nav-links {
+
+        gap: 20px;
+
+    }
+
+    .shop-toolbar {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+    .shop-actions {
+
+        width: 100%;
+
+    }
+
+    .search-box {
+
+        flex: 1;
+
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .nav-links {
+
+        display: none;
+
+    }
+
+    .menu-btn {
+
+        display: grid;
+        place-items: center;
+
+    }
+
+    .product-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+
+    }
+
+    .product-image {
+
+        height: 200px;
+
+    }
+
+    .product-info {
+
+        padding: 13px;
+
+    }
+
+    .product-name {
+
+        font-size: 14px;
+
+    }
+
+    .product-bottom {
+
+        align-items: flex-end;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+    .add-cart {
+
+        width: 100%;
+
+        justify-content: center;
+
+    }
+
+    .product-modal {
+
+        grid-template-columns: 1fr;
+
+        max-height: 90vh;
+
+        overflow-y: auto;
+
+    }
+
+    .modal-image {
+
+        height: 280px;
+
+    }
+
+    .modal-content {
+
+        padding: 30px;
+
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .navbar {
+
+        height: 65px;
+
+    }
+
+    .nav-container {
+
+        padding: 0 16px;
+
+    }
+
+    .nav-actions .icon-btn:nth-child(2) {
+
+        display: none;
+
+    }
+
+    .shop-hero {
+
+        padding: 50px 20px;
+
+    }
+
+    .shop-container {
+
+        padding: 30px 16px 60px;
+
+    }
+
+    .categories {
+
+        overflow-x: auto;
+
+        flex-wrap: nowrap;
+
+        width: 100%;
+
+        padding-bottom: 5px;
+
+    }
+
+    .category {
+
+        white-space: nowrap;
+
+    }
+
+    .shop-actions {
+
+        flex-direction: column;
+
+    }
+
+    .search-box {
+
+        width: 100%;
+
+    }
+
+    #sortSelect {
+
+        width: 100%;
+
+    }
+
+    .product-image {
+
+        height: 160px;
+
+    }
+
+    .product-price {
+
+        font-size: 15px;
+
+    }
+
+}
+</style>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="#" class="logo">
+                <span class="logo-icon">
+                    <i class="fa-solid fa-leaf"></i>
+                </span>
+                Eco<span>Mart</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#" class="active">Shop</a>
+                <a href="#">Categories</a>
+                <a href="#">About</a>
+                <a href="#">Blog</a>
+            </nav>
+
+            <div class="nav-actions">
+
+                <button class="icon-btn search-toggle">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <button class="icon-btn">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+
+                <button class="cart-btn">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-count">0</span>
+                </button>
+
+                <button class="menu-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= SHOP HEADER ================= -->
+
+    <main>
+
+        <section class="shop-hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    ECO • LOCAL • SUSTAINABLE
+                </span>
+
+                <h1>
+                    Shop <span>better.</span>
+                </h1>
+
+                <p>
+                    Discover carefully selected products that are
+                    better for you and better for the planet.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SHOP CONTROLS ================= -->
+
+        <section class="shop-container">
+
+            <div class="shop-toolbar">
+
+                <div class="categories">
+
+                    <button class="category active" data-category="all">
+                        All
+                    </button>
+
+                    <button class="category" data-category="food">
+                        Food
+                    </button>
+
+                    <button class="category" data-category="drinks">
+                        Drinks
+                    </button>
+
+                    <button class="category" data-category="snacks">
+                        Snacks
+                    </button>
+
+                    <button class="category" data-category="home">
+                        Home
+                    </button>
+
+                    <button class="category" data-category="gifts">
+                        Gifts
+                    </button>
+
+                </div>
+
+
+                <div class="shop-actions">
+
+                    <div class="search-box">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search products..."
+                        >
+
+                    </div>
+
+                    <select id="sortSelect">
+
+                        <option value="recommended">
+                            Recommended
+                        </option>
+
+                        <option value="price-low">
+                            Price: Low to High
+                        </option>
+
+                        <option value="price-high">
+                            Price: High to Low
+                        </option>
+
+                        <option value="rating">
+                            Highest Rated
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= PRODUCT HEADER ================= -->
+
+            <div class="products-heading">
+
+                <div>
+                    <h2>Our Products</h2>
+
+                    <p>
+                        <span id="productCount">0</span>
+                        products available
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- ================= PRODUCTS ================= -->
+
+            <div class="product-grid" id="productGrid">
+                <!-- Products generated by JavaScript -->
+            </div>
+
+
+            <!-- ================= NO RESULTS ================= -->
+
+            <div class="no-results" id="noResults">
+
+                <div class="no-results-icon">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+
+                <h3>No products found</h3>
+
+                <p>
+                    Try changing your search or category.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= PRODUCT MODAL ================= -->
+
+    <div class="modal-overlay" id="productModal">
+
+        <div class="product-modal">
+
+            <button class="close-modal" id="closeModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-image">
+                <img id="modalImage" src="" alt="">
+            </div>
+
+            <div class="modal-content">
+
+                <span class="modal-category" id="modalCategory">
+                    FOOD
+                </span>
+
+                <h2 id="modalName">
+                    Product Name
+                </h2>
+
+                <div class="modal-rating">
+                    <span>
+                        ★
+                    </span>
+
+                    <strong id="modalRating">
+                        4.8
+                    </strong>
+
+                    <small>
+                        Excellent rating
+                    </small>
+                </div>
+
+                <p class="modal-description" id="modalDescription">
+                    Product description.
+                </p>
+
+                <div class="modal-price" id="modalPrice">
+                    Rs. 450
+                </div>
+
+                <div class="modal-actions">
+
+                    <button class="add-cart modal-cart">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        Add to Cart
+                    </button>
+
+                    <button class="modal-wishlist">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CART TOAST ================= -->
+
+    <div class="cart-toast" id="cartToast">
+
+        <div class="toast-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <div>
+            <strong>Added to cart</strong>
+            <p>Product added successfully.</p>
+        </div>
+
+    </div>
+
+
+    <script>
+        /* =====================================================
+   PRODUCT DATA
+===================================================== */
+
+const products = [
+
+    {
+        id: 1,
+        name: "Organic Himalayan Tea",
+        category: "drinks",
+        price: 450,
+        rating: 4.8,
+        reviews: 124,
+        badge: "BEST SELLER",
+        image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?auto=format&fit=crop&w=800&q=80",
+        description:
+            "A fragrant Himalayan tea made from carefully selected leaves. Perfect for a relaxing morning or evening cup."
+    },
+
+    {
+        id: 2,
+        name: "Traditional Gundruk",
+        category: "food",
+        price: 350,
+        rating: 4.9,
+        reviews: 89,
+        badge: "LOCAL",
+        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
+        description:
+            "Traditional fermented leafy greens prepared using authentic Himalayan methods."
+    },
+
+    {
+        id: 3,
+        name: "Roasted Himalayan Coffee",
+        category: "drinks",
+        price: 650,
+        rating: 4.7,
+        reviews: 76,
+        badge: "POPULAR",
+        image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
+        description:
+            "Rich, aromatic coffee roasted from carefully sourced Himalayan beans."
+    },
+
+    {
+        id: 4,
+        name: "Spiced Himalayan Pickle",
+        category: "food",
+        price: 280,
+        rating: 4.6,
+        reviews: 61,
+        badge: "",
+        image: "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=80",
+        description:
+            "A bold and flavorful traditional pickle made with carefully selected local ingredients."
+    },
+
+    {
+        id: 5,
+        name: "Handmade Bamboo Basket",
+        category: "home",
+        price: 850,
+        rating: 4.9,
+        reviews: 45,
+        badge: "HANDMADE",
+        image: "https://images.unsplash.com/photo-1590736969955-71cc94901144?auto=format&fit=crop&w=800&q=80",
+        description:
+            "Beautifully handcrafted bamboo basket made by local artisans using traditional techniques."
+    },
+
+    {
+        id: 6,
+        name: "Organic Chhurpi",
+        category: "snacks",
+        price: 500,
+        rating: 4.8,
+        reviews: 112,
+        badge: "POPULAR",
+        image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?auto=format&fit=crop&w=800&q=80",
+        description:
+            "A traditional Himalayan snack with a naturally rich and satisfying flavor."
+    },
+
+    {
+        id: 7,
+        name: "Wild Honey",
+        category: "food",
+        price: 700,
+        rating: 4.9,
+        reviews: 93,
+        badge: "ORGANIC",
+        image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=800&q=80",
+        description:
+            "Pure wild honey collected from Himalayan regions and carefully bottled."
+    },
+
+    {
+        id: 8,
+        name: "Herbal Gift Box",
+        category: "gifts",
+        price: 1200,
+        rating: 4.7,
+        reviews: 38,
+        badge: "GIFT",
+        image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80",
+        description:
+            "A curated collection of traditional Himalayan herbal products, perfect for gifting."
+    }
+
+];
+
+
+/* =====================================================
+   DOM ELEMENTS
+===================================================== */
+
+const productGrid =
+    document.getElementById("productGrid");
+
+const productCount =
+    document.getElementById("productCount");
+
+const noResults =
+    document.getElementById("noResults");
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const sortSelect =
+    document.getElementById("sortSelect");
+
+const categories =
+    document.querySelectorAll(".category");
+
+const modal =
+    document.getElementById("productModal");
+
+const closeModal =
+    document.getElementById("closeModal");
+
+const cartCount =
+    document.querySelector(".cart-count");
+
+const cartToast =
+    document.getElementById("cartToast");
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let selectedCategory = "all";
+
+let cart = 0;
+
+let wishlist = new Set();
+
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
+
+function renderProducts() {
+
+    let filteredProducts =
+        [...products];
+
+    /*
+        CATEGORY FILTER
+    */
+
+    if (selectedCategory !== "all") {
+
+        filteredProducts =
+            filteredProducts.filter(
+                product =>
+                    product.category === selectedCategory
+            );
+
+    }
+
+
+    /*
+        SEARCH FILTER
+    */
+
+    const searchTerm =
+        searchInput.value
+            .toLowerCase()
+            .trim();
+
+    if (searchTerm) {
+
+        filteredProducts =
+            filteredProducts.filter(product =>
+
+                product.name
+                    .toLowerCase()
+                    .includes(searchTerm)
+
+            );
+
+    }
+
+
+    /*
+        SORT
+    */
+
+    const sort =
+        sortSelect.value;
+
+    if (sort === "price-low") {
+
+        filteredProducts.sort(
+            (a, b) => a.price - b.price
+        );
+
+    }
+
+    else if (sort === "price-high") {
+
+        filteredProducts.sort(
+            (a, b) => b.price - a.price
+        );
+
+    }
+
+    else if (sort === "rating") {
+
+        filteredProducts.sort(
+            (a, b) => b.rating - a.rating
+        );
+
+    }
+
+
+    /*
+        UPDATE COUNT
+    */
+
+    productCount.textContent =
+        filteredProducts.length;
+
+
+    /*
+        NO RESULTS
+    */
+
+    if (filteredProducts.length === 0) {
+
+        productGrid.innerHTML = "";
+
+        noResults.classList.add("show");
+
+        return;
+
+    }
+
+    noResults.classList.remove("show");
+
+
+    /*
+        CREATE PRODUCT CARDS
+    */
+
+    productGrid.innerHTML =
+        filteredProducts
+            .map(product => createProductCard(product))
+            .join("");
+
+
+    /*
+        EVENT LISTENERS
+    */
+
+    addProductListeners();
+
+}
+
+
+/* =====================================================
+   CREATE PRODUCT CARD
+===================================================== */
+
+function createProductCard(product) {
+
+    const isWishlisted =
+        wishlist.has(product.id);
+
+    return `
+
+        <article
+            class="product-card"
+            data-id="${product.id}"
+        >
+
+            <div class="product-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    loading="lazy"
+                >
+
+                ${
+                    product.badge
+                    ?
+                    `<span class="product-badge">
+                        ${product.badge}
+                    </span>`
+                    :
+                    ""
+                }
+
+                <button
+                    class="wishlist ${isWishlisted ? "active" : ""}"
+                    data-id="${product.id}"
+                    aria-label="Add to wishlist"
+                >
+
+                    <i class="${
+                        isWishlisted
+                        ? "fa-solid"
+                        : "fa-regular"
+                    } fa-heart"></i>
+
+                </button>
+
+            </div>
+
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    ${product.category}
+                </span>
+
+                <h3 class="product-name">
+                    ${product.name}
+                </h3>
+
+                <div class="product-rating">
+
+                    <span class="star">
+                        ★
+                    </span>
+
+                    <strong>
+                        ${product.rating}
+                    </strong>
+
+                    <span class="review-count">
+                        (${product.reviews})
+                    </span>
+
+                </div>
+
+
+                <div class="product-bottom">
+
+                    <span class="product-price">
+                        Rs. ${product.price}
+                    </span>
+
+                    <button
+                        class="add-cart"
+                        data-id="${product.id}"
+                    >
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* =====================================================
+   PRODUCT LISTENERS
+===================================================== */
+
+function addProductListeners() {
+
+    /*
+        PRODUCT CARD
+        Open modal
+    */
+
+    document
+        .querySelectorAll(".product-card")
+        .forEach(card => {
+
+            card.addEventListener("click", event => {
+
+                if (
+                    event.target.closest(".wishlist") ||
+                    event.target.closest(".add-cart")
+                ) {
+                    return;
+                }
+
+                const id =
+                    Number(card.dataset.id);
+
+                openProductModal(id);
+
+            });
+
+        });
+
+
+    /*
+        ADD CART
+    */
+
+    document
+        .querySelectorAll(".add-cart")
+        .forEach(button => {
+
+            button.addEventListener("click", event => {
+
+                event.stopPropagation();
+
+                const id =
+                    Number(button.dataset.id);
+
+                addToCart(id);
+
+            });
+
+        });
+
+
+    /*
+        WISHLIST
+    */
+
+    document
+        .querySelectorAll(".wishlist")
+        .forEach(button => {
+
+            button.addEventListener("click", event => {
+
+                event.stopPropagation();
+
+                const id =
+                    Number(button.dataset.id);
+
+                toggleWishlist(id);
+
+            });
+
+        });
+
+}
+
+
+/* =====================================================
+   ADD TO CART
+===================================================== */
+
+function addToCart(id) {
+
+    const product =
+        products.find(
+            product => product.id === id
+        );
+
+    if (!product) return;
+
+    cart++;
+
+    cartCount.textContent =
+        cart;
+
+    showToast(product.name);
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(name) {
+
+    cartToast.querySelector("p")
+        .textContent =
+        `${name} added successfully.`;
+
+    cartToast.classList.add("show");
+
+    setTimeout(() => {
+
+        cartToast.classList.remove("show");
+
+    }, 2500);
+
+}
+
+
+/* =====================================================
+   WISHLIST
+===================================================== */
+
+function toggleWishlist(id) {
+
+    if (wishlist.has(id)) {
+
+        wishlist.delete(id);
+
+    }
+
+    else {
+
+        wishlist.add(id);
+
+    }
+
+    renderProducts();
+
+}
+
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+
+categories.forEach(category => {
+
+    category.addEventListener("click", () => {
+
+        categories.forEach(button => {
+
+            button.classList.remove("active");
+
+        });
+
+        category.classList.add("active");
+
+        selectedCategory =
+            category.dataset.category;
+
+        renderProducts();
+
+    });
+
+});
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+searchInput.addEventListener(
+    "input",
+    renderProducts
+);
+
+
+/* =====================================================
+   SORT
+===================================================== */
+
+sortSelect.addEventListener(
+    "change",
+    renderProducts
+);
+
+
+/* =====================================================
+   PRODUCT MODAL
+===================================================== */
+
+function openProductModal(id) {
+
+    const product =
+        products.find(
+            product => product.id === id
+        );
+
+    if (!product) return;
+
+
+    document.getElementById("modalImage")
+        .src = product.image;
+
+    document.getElementById("modalImage")
+        .alt = product.name;
+
+    document.getElementById("modalCategory")
+        .textContent =
+        product.category.toUpperCase();
+
+    document.getElementById("modalName")
+        .textContent =
+        product.name;
+
+    document.getElementById("modalRating")
+        .textContent =
+        product.rating;
+
+    document.getElementById("modalDescription")
+        .textContent =
+        product.description;
+
+    document.getElementById("modalPrice")
+        .textContent =
+        `Rs. ${product.price}`;
+
+
+    /*
+        MODAL ADD CART
+    */
+
+    const modalCart =
+        document.querySelector(".modal-cart");
+
+    modalCart.onclick = () => {
+
+        addToCart(product.id);
+
+        closeProductModal();
+
+    };
+
+
+    /*
+        MODAL WISHLIST
+    */
+
+    const modalWishlist =
+        document.querySelector(".modal-wishlist");
+
+    modalWishlist.onclick = () => {
+
+        toggleWishlist(product.id);
+
+        modalWishlist.innerHTML =
+            wishlist.has(product.id)
+
+            ? `<i class="fa-solid fa-heart"></i>`
+
+            : `<i class="fa-regular fa-heart"></i>`;
+
+    };
+
+
+    modal.classList.add("show");
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeProductModal() {
+
+    modal.classList.remove("show");
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+closeModal.addEventListener(
+    "click",
+    closeProductModal
+);
+
+
+/*
+    Close by clicking outside
+*/
+
+modal.addEventListener(
+    "click",
+    event => {
+
+        if (event.target === modal) {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+
+/*
+    Close with ESC
+*/
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (event.key === "Escape") {
+
+            closeProductModal();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIAL RENDER
+===================================================== */
+
+renderProducts();
+    </script>
+
+</body>
+</html>
